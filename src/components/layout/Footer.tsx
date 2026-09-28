@@ -2,7 +2,7 @@ import { Mail, MapPin, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { navigation } from "@/config/content";
 import { siteConfig } from "@/config/site";
-import { whatsappUrl } from "@/lib/links";
+import { generalWhatsappUrl } from "@/lib/links";
 import { Container } from "@/components/ui/Container";
 import { CurrentYear } from "@/components/ui/CurrentYear";
 import { LinkedinIcon } from "@/components/ui/icons";
@@ -50,7 +50,7 @@ export function Footer({ basePath = "" }: { basePath?: string }) {
                 </a>
               </li>
               <li>
-                <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                <a href={generalWhatsappUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
                   <MessageCircle size={17} strokeWidth={1.6} className="shrink-0 text-teal-light" aria-hidden="true" />
                   WhatsApp {contact.whatsapp.display}
                   <span className="sr-only"> (se abre en una pestaña nueva)</span>

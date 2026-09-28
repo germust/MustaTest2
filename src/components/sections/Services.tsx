@@ -15,7 +15,7 @@ export function Services() {
           <SectionHeader id="servicios-titulo" eyebrow={services.eyebrow} title={services.title} intro={services.intro} />
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:mt-16 lg:gap-7">
+        <div className="mt-14 grid gap-6 lg:mt-16 lg:grid-cols-2 lg:gap-7">
           {services.items.map((service, index) => (
             <article
               key={service.id}
@@ -36,11 +36,11 @@ export function Services() {
               <h3 id={`servicio-${service.id}`} className="mt-7 text-h3 font-semibold text-navy">
                 {service.title}
               </h3>
-              <p className="mt-3 text-muted">{service.description}</p>
+              <p className="mt-3 max-w-2xl text-muted">{service.description}</p>
 
-              <ul className="mt-7 space-y-3 border-t border-line pt-7 text-[1rem] leading-snug text-navy">
+              <ul className="mt-7 space-y-3 border-t border-line pt-7 text-[1rem] leading-snug text-navy md:columns-2 md:gap-x-8 lg:columns-1">
                 {service.items.map((item) => (
-                  <li key={item} className="flex gap-3">
+                  <li key={item} className="flex break-inside-avoid gap-3">
                     <Check size={18} strokeWidth={1.75} className="mt-px shrink-0 text-teal" aria-hidden="true" />
                     <span>{item}</span>
                   </li>

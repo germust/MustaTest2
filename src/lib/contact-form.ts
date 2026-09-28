@@ -31,7 +31,9 @@ export const fieldLimits: Record<ContactFormField, number> = {
 
 // Caracteres de control (excepto saltos de línea y tabulaciones) y caracteres
 // invisibles de formato que no deberían llegar al mensaje.
-const CONTROL_CHARS = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F​-‏‪-‮⁠-⁤﻿]/g;
+const CONTROL_CHARS = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u200B-\u200F\u202A-\u202E\u2060-\u2064\uFEFF]/g;
+// Etiquetas HTML y signos < > sueltos: no aportan al mensaje y se eliminan.
+const HTML_TAGS = /<[^>]*>/g;
 const ANGLE_BRACKETS = /[<>]/g;
 
 /** Normaliza un texto de una línea: sin caracteres de control ni espacios repetidos. */
@@ -39,6 +41,7 @@ function cleanLine(value: string, max: number): string {
   return value
     .normalize("NFC")
     .replace(CONTROL_CHARS, "")
+    .replace(HTML_TAGS, "")
     .replace(ANGLE_BRACKETS, "")
     .replace(/\s+/g, " ")
     .trim()
@@ -51,6 +54,7 @@ function cleanMultiline(value: string, max: number): string {
     .normalize("NFC")
     .replace(/\r\n?/g, "\n")
     .replace(CONTROL_CHARS, "")
+    .replace(HTML_TAGS, "")
     .replace(ANGLE_BRACKETS, "")
     .replace(/[ \t]+/g, " ")
     .replace(/\n{3,}/g, "\n\n")

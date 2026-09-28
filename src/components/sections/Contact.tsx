@@ -2,7 +2,7 @@ import { Mail, MapPin, MessageCircle, UserRound } from "lucide-react";
 import type { ReactNode } from "react";
 import { contact, ctaLabels, services } from "@/config/content";
 import { siteConfig } from "@/config/site";
-import { generalMailtoUrl, generalWhatsappUrl, whatsappUrl } from "@/lib/links";
+import { generalMailtoUrl, generalWhatsappUrl } from "@/lib/links";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
@@ -48,7 +48,7 @@ export function Contact() {
               {location.full}
             </ContactItem>
             <ContactItem icon={<MessageCircle {...iconProps} />} label="WhatsApp">
-              <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" className={contactLinkClass}>
+              <a href={generalWhatsappUrl} target="_blank" rel="noopener noreferrer" className={contactLinkClass}>
                 {data.whatsapp.display}
                 <span className="sr-only"> (se abre en una pestaña nueva)</span>
               </a>
@@ -69,10 +69,10 @@ export function Contact() {
           </ul>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href={generalWhatsappUrl} icon={<MessageCircle size={18} strokeWidth={1.75} />} className="w-full sm:w-auto">
+            <ButtonLink href={generalWhatsappUrl} leadingIcon={<MessageCircle size={18} strokeWidth={1.75} />} className="w-full sm:w-auto">
               {ctaLabels.whatsapp}
             </ButtonLink>
-            <ButtonLink href={generalMailtoUrl} variant="secondary-dark" icon={<Mail size={18} strokeWidth={1.75} />} className="w-full sm:w-auto">
+            <ButtonLink href={generalMailtoUrl} variant="secondary-dark" leadingIcon={<Mail size={18} strokeWidth={1.75} />} className="w-full sm:w-auto">
               {ctaLabels.email}
             </ButtonLink>
           </div>

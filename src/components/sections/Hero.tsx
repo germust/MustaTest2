@@ -23,10 +23,11 @@ export function Hero() {
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <ButtonLink
               href={generalWhatsappUrl}
-              icon={<MessageCircle size={18} strokeWidth={1.75} />}
+              leadingIcon={<MessageCircle size={18} strokeWidth={1.75} />}
               className="w-full sm:w-auto"
             >
               {ctaLabels.meeting}
+              <span className="sr-only"> por WhatsApp</span>
             </ButtonLink>
             <ButtonLink
               href="#servicios"
@@ -38,7 +39,7 @@ export function Hero() {
             </ButtonLink>
           </div>
 
-          <ul className="mt-12 grid max-w-[40rem] grid-cols-2 gap-x-6 gap-y-4 border-t border-line pt-7 text-small font-medium text-navy sm:flex sm:flex-wrap sm:gap-x-8">
+          <ul className="mt-12 grid max-w-[40rem] grid-cols-2 gap-x-6 gap-y-4 border-t border-line pt-7 text-small font-medium text-navy sm:flex sm:flex-wrap sm:gap-x-8 lg:grid xl:flex">
             {hero.highlights.map((item) => (
               <li key={item.label} className="flex items-center gap-2.5">
                 <Icon name={item.icon} size={18} strokeWidth={1.6} className="shrink-0 text-teal" />
@@ -48,7 +49,7 @@ export function Hero() {
           </ul>
         </div>
 
-        <div className="mx-auto w-full max-w-[520px] lg:col-span-5 lg:max-w-none">
+        <div className="mx-auto w-full max-w-[520px] lg:col-span-5 lg:mr-0 lg:-ml-4 lg:w-auto lg:max-w-none xl:-ml-16">
           <HeroVisual />
         </div>
       </Container>

@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 /**
  * Datos estructurados (schema.org) del tipo ProfessionalService.
  * Solo incluye información real provista por la empresa; no hay dirección
- * física porque no fue definida.
+ * física porque no fue definida. El perfil de LinkedIn se asocia al fundador.
  */
 export function JsonLd() {
   const { url, name, founder, location, contact, social, brand, seo } = siteConfig;
@@ -55,7 +55,6 @@ export function JsonLd() {
         itemOffered: { "@type": "Service", name: service.title, description: service.description },
       })),
     },
-    ...(social.linkedin ? { sameAs: [social.linkedin] } : {}),
   };
 
   return (

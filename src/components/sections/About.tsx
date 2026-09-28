@@ -14,7 +14,7 @@ export function About() {
       <Container className="grid gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7 lg:pr-10" data-reveal>
           <SectionHeader id="sobre-titulo" eyebrow={about.eyebrow} title={about.title} />
-          <div className="mt-8 space-y-6 text-muted">
+          <div className="mt-8 max-w-2xl space-y-6 text-muted lg:max-w-none">
             {about.paragraphs.map((paragraph, index) => (
               <p key={index} className={index === 0 ? "text-lead text-navy" : undefined}>
                 {paragraph}

@@ -2,7 +2,7 @@
 
 import { ChevronDown, CircleAlert, CircleCheck, Mail, MessageCircle, Send } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type FormEvent, type MouseEvent, type ReactNode } from "react";
 import { siteConfig } from "@/config/site";
 import {
   buildMailtoLink,
@@ -54,7 +54,7 @@ function FieldShell({
 }) {
   const { id, label, required } = fields[field];
   return (
-    <div>
+    <div data-field={field}>
       <label htmlFor={id} className="mb-2 block text-[0.9375rem] font-medium text-navy">
         {label}
         {required ? (
@@ -112,10 +112,19 @@ export function ContactForm({ serviceOptions }: { serviceOptions: string[] }) {
     const next = { ...values, [field]: value };
     setValues(next);
     // Una vez intentado el envío, los errores se actualizan mientras se corrige.
-    if (attempts > 0 || errors[field]) {
+    if (attempts > 0) {
       setErrors(validateContactForm(sanitizeContactForm(next)));
     }
     if (status.type === "opened" || status.type === "error") setStatus({ type: "idle" });
+  }
+
+  // Los enlaces del resumen llevan el foco al campo y dejan visible su etiqueta.
+  function focusField(event: MouseEvent<HTMLAnchorElement>, field: ContactFormField) {
+    const control = document.getElementById(fields[field].id);
+    if (!control) return;
+    event.preventDefault();
+    control.focus({ preventScroll: true });
+    control.closest("[data-field]")?.scrollIntoView({ block: "center" });
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -170,6 +179,7 @@ export function ContactForm({ serviceOptions }: { serviceOptions: string[] }) {
         <div
           ref={summaryRef}
           tabIndex={-1}
+          role="group"
           aria-labelledby="contacto-errores-titulo"
           className="mb-8 rounded-[10px] border border-navy bg-ivory p-5"
         >
@@ -180,7 +190,11 @@ export function ContactForm({ serviceOptions }: { serviceOptions: string[] }) {
           <ul className="mt-3 space-y-1.5 pl-7 text-small">
             {errorList.map((field) => (
               <li key={field}>
-                <a href={`#${fields[field].id}`} className="font-medium text-teal-dark underline underline-offset-4 hover:text-navy">
+                <a
+                  href={`#${fields[field].id}`}
+                  onClick={(event) => focusField(event, field)}
+                  className="font-medium text-teal-dark underline underline-offset-4 hover:text-navy"
+                >
                   {fields[field].label}: {errors[field]}
                 </a>
               </li>

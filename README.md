@@ -257,6 +257,21 @@ Next.js (Netlify, Cloudflare, un servidor propio con `npm run start`).
 - Animaciones de 150 a 400 ms, sin librerías, desactivadas con `prefers-reduced-motion`.
 - Enlaces externos con `target="_blank"` y `rel="noopener noreferrer"`; cabeceras de seguridad en
   `next.config.ts`.
-- Revisión realizada sobre el build de producción: 1440, 1024, 768, 390 y 320 px sin scroll
-  horizontal ni errores de consola. Lighthouse local: móvil 97 · 100 · 100 · 100, escritorio
-  100 · 100 · 100 · 100 (rendimiento, accesibilidad, buenas prácticas, SEO).
+
+### Revisión realizada
+
+- **Resoluciones:** 320, 390, 768, 1024, 1280, 1440, 1920 y 2560 px, sin scroll horizontal ni
+  contenido cortado. En tablet los servicios se muestran de a uno con la lista en dos columnas.
+- **Consola:** sin errores ni advertencias en producción ni en modo desarrollo (hidratación,
+  claves de listas, props).
+- **Accesibilidad:** axe-core (WCAG 2.2 AA y buenas prácticas) sin violaciones en portada, menú
+  móvil abierto, formulario con errores, privacidad y 404; sin IDs duplicados. Probado con
+  teclado: enlace "Saltar al contenido", menú con foco contenido y Escape, resumen de errores que
+  lleva a cada campo.
+- **Formulario:** probado en ambos modos. Con servicio externo (simulado localmente): envío
+  correcto, error del servicio con los datos conservados, un solo envío ante clics repetidos y
+  datos limpios (sin etiquetas HTML ni caracteres invisibles).
+- **Contenido:** los 13 enlaces de WhatsApp de la portada llevan mensaje precargado; el logo
+  principal es idéntico al archivo entregado; sin textos de relleno ni cifras inventadas.
+- **Lighthouse (build local):** escritorio 100 · 100 · 100 · 100; móvil 97 · 100 · 100 · 100
+  (rendimiento, accesibilidad, buenas prácticas, SEO), CLS 0.
