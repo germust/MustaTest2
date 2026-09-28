@@ -1,0 +1,149 @@
+/* Se escanean solo los archivos de /src para generar clases. */
+@import "tailwindcss" source("../");
+
+/*
+ * Paleta de Must Consulting.
+ * Se reemplaza la paleta por defecto de Tailwind para que solo existan los
+ * colores de marca (evita incorporar colores ajenos por error).
+ */
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-navy: #122332;
+  --color-navy-2: #18364b;
+  --color-teal: #2e7f7a;
+  --color-teal-dark: #246b67;
+  --color-teal-light: #7ed0c7;
+  --color-ivory: #f7f8f6;
+  --color-muted: #5b6873;
+  --color-line: #d6e0e2;
+  --color-surface: #e6eeee;
+
+  --font-sans: var(--font-inter), Inter, Calibri, Arial, sans-serif;
+
+  /* Escala tipográfica responsiva */
+  --text-display: clamp(2.125rem, 1.25rem + 3.2vw, 4rem);
+  --text-display--line-height: 1.08;
+  --text-display--letter-spacing: -0.028em;
+  --text-h2: clamp(1.875rem, 1.2rem + 2.1vw, 2.875rem);
+  --text-h2--line-height: 1.12;
+  --text-h2--letter-spacing: -0.022em;
+  --text-h3: clamp(1.375rem, 1.15rem + 0.7vw, 1.75rem);
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.015em;
+  --text-lead: clamp(1.125rem, 1.02rem + 0.42vw, 1.375rem);
+  --text-lead--line-height: 1.55;
+  --text-body: clamp(1.0625rem, 1.02rem + 0.18vw, 1.125rem);
+  --text-body--line-height: 1.65;
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.55;
+  --text-eyebrow: 0.8125rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.14em;
+
+  --ease-soft: cubic-bezier(0.2, 0.6, 0.2, 1);
+
+  --animate-float-soft: float-soft 7s ease-in-out infinite alternate;
+  --animate-fade-up: fade-up 400ms var(--ease-soft) both;
+
+  @keyframes float-soft {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Compensa el encabezado fijo al navegar por anclas. */
+    scroll-padding-top: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-navy);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-teal-light);
+    color: var(--color-navy);
+  }
+
+  /*
+   * Foco visible: anillo verde azulado claro con una línea azul marino interna
+   * para que se distinga tanto en fondos claros como oscuros.
+   */
+  :focus-visible {
+    outline: 3px solid var(--color-teal-light);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-navy);
+  }
+}
+
+@layer components {
+  /* Aparición suave al ingresar al viewport (ver RevealObserver). */
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(14px);
+      transition:
+        opacity 400ms var(--ease-soft),
+        transform 400ms var(--ease-soft);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    [data-reveal][data-revealed] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
