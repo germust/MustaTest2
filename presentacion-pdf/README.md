@@ -35,6 +35,11 @@ navegador no está instalado, `npx playwright install chromium`).
 `presentacion.html` y `presentacion-sin-metadatos.pdf` son intermedios y no
 se guardan en git.
 
+**Copia en la web:** `must-consulting.com/presentacion.pdf` (enlace "Mirá la
+presentación en PDF" en la sección "Para quién"). Es una copia de este PDF en
+`public/presentacion.pdf` del repositorio `germust/mustconsultinganimation`:
+después de regenerarlo, reemplazar ese archivo y publicar la web.
+
 ## Dónde se cambia cada cosa
 
 Todo está en `build.py`:
