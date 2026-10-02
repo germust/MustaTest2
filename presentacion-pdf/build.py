@@ -218,7 +218,7 @@ cover = f'''<section class="page cover" id="p1">
     <span class="q">{ic("ArrowRight", 15, TEAL_L, 2)}¿Qué parte de tu negocio querés ordenar primero?</span>
   </div>
   <div class="toc">
-    <a href="#p2"><span class="n">01</span><h3>Emprendedores y profesionales</h3><p>Emprendimientos y oficinas</p><span class="go">Página 2 {ic("ArrowRight", 13, TEAL_L, 2)}</span></a>
+    <a href="#p2"><span class="n">01</span><h3>Emprendimientos y oficinas</h3><p>Emprendedores y profesionales independientes</p><span class="go">Página 2 {ic("ArrowRight", 13, TEAL_L, 2)}</span></a>
     <a href="#p4"><span class="n">02</span><h3>PyMEs</h3><p>Dueños · gerentes · equipos</p><span class="go">Página 4 {ic("ArrowRight", 13, TEAL_L, 2)}</span></a>
   </div>
   <div class="cover-foot">

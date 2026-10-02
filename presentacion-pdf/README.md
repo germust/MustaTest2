@@ -9,7 +9,7 @@ web: cambiar algo acá no modifica el sitio.
 
 | Página | Título | Subtítulo / contenido |
 | --- | --- | --- |
-| 1 · Carátula | Soluciones para emprendedores, profesionales y PyMEs | Índice: 01 Emprendedores y profesionales (Emprendimientos y oficinas) · 02 PyMEs (Dueños · gerentes · equipos) |
+| 1 · Carátula | Soluciones para emprendedores, profesionales y PyMEs | Índice: 01 Emprendimientos y oficinas (Emprendedores y profesionales independientes) · 02 PyMEs (Dueños · gerentes · equipos) |
 | 2 · 01 | Emprendedores y profesionales independientes | Más tiempo para dedicarle a lo que hacés. Problemas 01–03, "No necesitás cambiar todo" y la historia del lunes (modo caos → todo en orden) |
 | 3 · 01 | Soluciones a tu escala | Menos tareas repetidas. Más claridad. Problemas 04–06, antes y después de una consulta de un cliente, herramientas que ya usás y botón a WhatsApp |
 | 4 · 02 | Dueños, gerentes y equipos | Cuando el negocio crece, la gestión también. Problemas 01–04 y "Del dato a la decisión" |
